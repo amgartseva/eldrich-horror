@@ -1,0 +1,220 @@
+[
+  {
+    "name": "Астральное путешествие",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Благословение Исиды",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Буря духов",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Вселить отвагу",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Вмешательство",
+    "type": "Чары",
+    "modifiers": [
+      "Командная"
+    ],
+    "count": 4
+  },
+  {
+    "name": "Внутренний зверь",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Вызов бури",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Голос Ра",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Жуткое проклятие",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Защита плоти",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Иссушение",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Исцеляющие слова",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Изгнание",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Изменить судьбу",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Колдовское оружие",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Колдовская грация",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Лишение силы",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Лазурное пламя",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Мистическое вдохновение",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Мысленный взор",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Найти врата",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Наложение пут",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Отметины Исиды",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Призрачное лезвие",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Призыв",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Пища для ума",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Пронзить пустоту",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Покров тени",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Призвать бьякхи",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Разрушение",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Сотворение",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Тайная интуиция",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Туманы Релеха",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Ускоренное обучение",
+    "type": "Аура",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Ядовитый туман",
+    "type": "Ритуал",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Ясновидение",
+    "type": "Чары",
+    "modifiers": [],
+    "count": 4
+  }
+]

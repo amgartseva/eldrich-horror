@@ -1,0 +1,91 @@
+.parameter-form {
+  --button-height: 44px;
+  --checkbox-size: 33px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.parameter-form__dataset-button,
+.parameter-form__button {
+  height: var(--button-height);
+  color: var(--color-lightest);
+}
+
+.parameter-form__dataset-button {
+  background-color: var(--color-button-dark);
+}
+
+.parameter-form__section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.parameter-form__item {
+  flex-grow: 1;
+  min-width: 50%;
+  position: relative; /* for label */
+}
+
+.parameter-form__checkbox-wrapper {
+  position: absolute;
+  top: calc(var(--button-height) / 2);
+  right: 4px;
+  transform: translateY(-50%);
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+}
+
+.parameter-form__label {
+  position: relative; /* for checkbox */
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.parameter-form__checkbox {
+  display: none;
+}
+
+.parameter-form__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  background-color: var(--color-checkbox);
+}
+
+.parameter-form__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.parameter-form__label input:checked ~ .parameter-form__checkmark:after {
+  display: block;
+}
+
+.parameter-form__label .parameter-form__checkmark:after {
+  left: 9px;
+  top: 0px;
+  width: 10px;
+  height: 23px;
+  border: solid var(--color-checkbox-icon);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.parameter-form__name {
+  visibility: hidden;
+}
+
+.parameter-form__button {
+  width: 100%;
+  padding-right: calc(4px + var(--checkbox-size) + 4px);
+  background-color: var(--color-button-medium);
+}

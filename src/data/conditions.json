@@ -1,0 +1,292 @@
+[
+  {
+    "name": "Проклятие",
+    "type": "Напасть",
+    "modifiers": [],
+    "count": 11
+  },
+  {
+    "name": "Помешательство",
+    "type": "Напасть",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Порча",
+    "type": "Напасть",
+    "modifiers": [],
+    "count": 8
+  },
+  {
+    "name": "Призраки",
+    "type": "Напасть",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Заключение",
+    "type": "Препятствие",
+    "modifiers": [],
+    "count": 5
+  },
+  {
+    "name": "Вне времени и пространства",
+    "type": "Препятствие",
+    "modifiers": [],
+    "count": 8
+  },
+  {
+    "name": "Долг",
+    "type": "Соглашение",
+    "modifiers": [
+      "Обычное"
+    ],
+    "count": 14
+  },
+  {
+    "name": "Договор",
+    "type": "Соглашение",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Финансирование",
+    "type": "Соглашение",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Обещанная сила",
+    "type": "Соглашение",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Тёмная сделка",
+    "type": "Соглашение",
+    "modifiers": [],
+    "count": 9
+  },
+  {
+    "name": "Недуг",
+    "type": "Болезнь",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Отравление",
+    "type": "Болезнь",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Заражение",
+    "type": "Болезнь",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Травма спины",
+    "type": "Травма",
+    "modifiers": [],
+    "count": 5
+  },
+  {
+    "name": "Травма ноги",
+    "type": "Травма",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Травма головы",
+    "type": "Травма",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Внутренняя травма",
+    "type": "Травма",
+    "modifiers": [],
+    "count": 5
+  },
+  {
+    "name": "Паранойя",
+    "type": "Безумие",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Амнезия",
+    "type": "Безумие",
+    "modifiers": [],
+    "count": 6
+  },
+  {
+    "name": "Страх",
+    "type": "Безумие",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Голод",
+    "type": "Безумие",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Галлюцинации",
+    "type": "Безумие",
+    "modifiers": [],
+    "count": 5
+  },
+  {
+    "name": "Отчаяние",
+    "type": "Безумие",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Благословение",
+    "type": "Дар",
+    "modifiers": [],
+    "count": 11
+  },
+  {
+    "name": "Самообладание",
+    "type": "Талант, Дар",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Прилежание",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Неуловимость",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Ловкость рук",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Беспощадность",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Праведник",
+    "type": "Дар",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Сила воли",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Быстрое обучение",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Храбрость",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Живучесть",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Медитация",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Восприятие",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Опытность",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Красноречие",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Живая связь",
+    "type": "Дар",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Гармония",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Видения",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Отвага",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Выносливость",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 2
+  },
+  {
+    "name": "Боевой азарт",
+    "type": "Талант",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Переохлаждение",
+    "type": "Воздействие",
+    "modifiers": [],
+    "count": 8
+  },
+  {
+    "name": "В розыске",
+    "type": "Преследование",
+    "modifiers": [],
+    "count": 4
+  },
+  {
+    "name": "Погоня",
+    "type": "Преследование",
+    "modifiers": [],
+    "count": 4
+  }
+]

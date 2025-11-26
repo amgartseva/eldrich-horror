@@ -1,0 +1,26 @@
+:root {
+    --sand: #E1D9C9;
+    --stone: #AE9372;
+    --coffee: #B27D57;
+    --ochre: #7F4B30;
+    --gum: #7D8769;
+    --moss: #424C21;
+    --forest: #173125;
+    --basalt: #212E40;
+  
+    --color-card: var(--sand);
+    --color-card-cost: var(--basalt);
+    --color-app: var(--stone);
+    --color-footer: var(--basalt);
+  
+    --text-light: var(--sand);
+    --text-medium: var(--ochre);
+    --text-dark: var(--basalt);
+  
+    --color-button-light: var(--gum);
+    --color-button-medium: var(--moss);
+    --color-button-dark: var(--forest);
+  
+    --color-checkbox: var(--sand);
+    --color-checkbox-icon: var(--basalt);
+  }
