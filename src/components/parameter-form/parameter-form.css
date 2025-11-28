@@ -19,6 +19,12 @@
   display: flex;
   align-items: center;
   height: var(--button-height);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.parameter-form__logic-button:active {
+  /* No visual change on press - prevents default mobile styles */
+  background: none;
 }
 
 .parameter-form__logic-text {
@@ -40,11 +46,16 @@
 .parameter-form__button {
   height: var(--button-height);
   color: var(--text-light);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .parameter-form__dataset-button {
   width: 100%;
   background-color: var(--color-button-dark);
+}
+
+.parameter-form__dataset-button:active {
+  background-color: color-mix(in srgb, var(--color-button-dark) 85%, black);
 }
 
 .parameter-form__section {
@@ -86,6 +97,12 @@
   width: var(--checkbox-size);
   height: var(--checkbox-size);
   background-color: var(--color-checkbox);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.parameter-form__label:active .parameter-form__checkmark {
+  /* No visual change on press - prevents default mobile styles */
+  background-color: var(--color-checkbox);
 }
 
 .parameter-form__checkmark:after {
@@ -114,4 +131,8 @@
   width: 100%;
   padding-right: calc(4px + var(--checkbox-size) + 4px);
   background-color: var(--color-button-medium);
+}
+
+.parameter-form__button:active {
+  background-color: color-mix(in srgb, var(--color-button-medium) 85%, black);
 }
