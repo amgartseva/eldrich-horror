@@ -92,7 +92,6 @@ function App() {
           ))}
         </div>
       </main>
-      <footer className="app__footer">DAN production 2025</footer>
     </>
   )
 }

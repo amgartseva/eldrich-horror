@@ -63,11 +63,3 @@ button {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-.app__footer {
-  width: 100%;
-  text-align: center;
-  background-color: var(--color-footer);
-  padding-top: 4px;
-  padding-bottom: 4px;
-}

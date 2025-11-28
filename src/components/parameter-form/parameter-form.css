@@ -18,10 +18,9 @@
 }
 
 .parameter-form__section {
-  /* display: flex;
-  flex-wrap: wrap; */
   display: grid;
   grid-template-columns: repeat(3, calc(100% / 3));
+  gap: 2px;
 }
 
 .parameter-form__item {
