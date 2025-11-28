@@ -188,7 +188,7 @@ export default function ParameterForm({
         // If neither types nor modifiers are selected, return true (no filter)
         const hasTypeSelection = selectedTypes.length > 0
         const hasModifierSelection = selectedModifiers.length > 0
-        
+
         if (!hasTypeSelection && !hasModifierSelection) {
           return true
         }

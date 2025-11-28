@@ -43,7 +43,8 @@ button {
   overflow: hidden;
 }
 
-.app__animation-container {
+.app__animation-container,
+.app__ghost-card {
   position: absolute;
   width: calc(100% - 8px);
   height: 100px;
@@ -51,7 +52,17 @@ button {
   margin-left: 4px;
   margin-right: 4px;
   left: 0;
+}
+
+.app__animation-container {
   animation: showCard 0.4s ease-out;
+  z-index: 1;
+}
+
+.app__ghost-card {
+  bottom: -1px;
+  z-index: 0;
+  animation: hideCard 0.4s ease-in forwards;
 }
 
 @keyframes showCard {
@@ -61,6 +72,16 @@ button {
 
   100% {
     bottom: 0;
+  }
+}
+
+@keyframes hideCard {
+  0% {
+    bottom: 0;
+  }
+
+  100% {
+    bottom: -110px;
   }
 }
 
