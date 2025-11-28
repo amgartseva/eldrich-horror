@@ -178,7 +178,29 @@ export default function ParameterForm({
               )
             })()
 
-      return matchesType && matchesModifiers
+      // Combine type and modifier matching based on filterLogic
+      // AND: card must match both type AND modifier criteria
+      // OR: card must match type OR modifier criteria (any selected property)
+      if (filterLogic === 'AND') {
+        return matchesType && matchesModifiers
+      } else {
+        // OR logic: match if either types or modifiers match
+        // If neither types nor modifiers are selected, return true (no filter)
+        const hasTypeSelection = selectedTypes.length > 0
+        const hasModifierSelection = selectedModifiers.length > 0
+        
+        if (!hasTypeSelection && !hasModifierSelection) {
+          return true
+        }
+        if (!hasTypeSelection) {
+          return matchesModifiers
+        }
+        if (!hasModifierSelection) {
+          return matchesType
+        }
+        // Both have selections: match if either matches
+        return matchesType || matchesModifiers
+      }
     })
 
     if (filteredAssets.length === 0) {
