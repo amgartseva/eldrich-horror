@@ -67,6 +67,7 @@ function App() {
   const [cardKey, setCardKey] = useState(0)
   const [showGhost, setShowGhost] = useState(false)
   const ghostTimeoutRef = useRef<number | null>(null)
+  const errorTimeoutRef = useRef<number | null>(null)
 
   const handleCardSelect = (selectedCard: Asset) => {
     // Clear any pending ghost card removal
@@ -74,8 +75,14 @@ function App() {
       clearTimeout(ghostTimeoutRef.current)
       ghostTimeoutRef.current = null
     }
+    
+    // Clear any pending error timeout
+    if (errorTimeoutRef.current) {
+      clearTimeout(errorTimeoutRef.current)
+      errorTimeoutRef.current = null
+    }
+    
     // Save the current card as previous before setting the new one
-    setHasNoMatch(false)
     setShowGhost(false)
     if (card) {
       setPreviousCard(card)
@@ -83,13 +90,31 @@ function App() {
     setCard(selectedCard)
     // Increment key to force remount even if same card is picked
     setCardKey((prev) => prev + 1)
+    
+    // If there was an error showing, keep it visible during animation
+    // then clear it after the card has animated in
+    if (hasNoMatch) {
+      errorTimeoutRef.current = window.setTimeout(() => {
+        setHasNoMatch(false)
+        errorTimeoutRef.current = null
+      }, 400)
+    } else {
+      // No error was showing, but make sure it stays cleared
+      setHasNoMatch(false)
+    }
   }
 
   const handleNoMatch = (hasNoMatch: boolean) => {
-    // Clear any existing timeout FIRST
+    // Clear any existing ghost timeout
     if (ghostTimeoutRef.current) {
       clearTimeout(ghostTimeoutRef.current)
       ghostTimeoutRef.current = null
+    }
+    
+    // Clear any existing error timeout
+    if (errorTimeoutRef.current) {
+      clearTimeout(errorTimeoutRef.current)
+      errorTimeoutRef.current = null
     }
     
     if (hasNoMatch) {
@@ -114,8 +139,9 @@ function App() {
         setPreviousCard(null)
       }
     } else {
-      // Not a no-match scenario
-      setHasNoMatch(false)
+      // Not a no-match scenario - but don't clear immediately
+      // The error might need to stay visible if a card is about to be selected
+      // Don't call setHasNoMatch(false) here - let handleCardSelect manage it
       setShowGhost(false)
     }
   }
@@ -123,28 +149,23 @@ function App() {
   return (
     <>
       <div className="app__card-container">
-        {hasNoMatch ? (
-          <>
-            <p className="app__error-message">Такой карты нет</p>
-            {showGhost && previousCard && (
-              <div key={`ghost-${cardKey}`} className="app__ghost-card app__ghost-card--hiding">
-                <Card card={previousCard} />
-              </div>
-            )}
-          </>
-        ) : card ? (
+        {hasNoMatch && <p className="app__error-message">Такой карты нет</p>}
+        {showGhost && previousCard && (
+          <div key={`ghost-${cardKey}`} className="app__ghost-card app__ghost-card--hiding">
+            <Card card={previousCard} />
+          </div>
+        )}
+        {card && (
           <>
             <div key={cardKey} className="app__animation-container">
               <Card card={card} />
             </div>
-            {previousCard && (
+            {previousCard && !hasNoMatch && (
               <div key={`ghost-${cardKey}`} className="app__ghost-card app__ghost-card--static">
                 <Card card={previousCard} />
               </div>
             )}
           </>
-        ) : (
-          ''
         )}
       </div>
       <div className="app__settings">

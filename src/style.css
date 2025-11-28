@@ -86,9 +86,11 @@ button {
 }
 
 .app__error-message {
+  position: absolute;
   color: var(--text-dark);
   font-size: 20px;
   font-weight: 500;
+  z-index: 0;
 }
 
 .app__settings {
