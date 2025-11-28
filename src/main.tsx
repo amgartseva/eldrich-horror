@@ -7,6 +7,7 @@ import artefacts from './data/artefacts.json'
 import conditions from './data/conditions.json'
 import spells from './data/spells.json'
 import uniqueAssets from './data/unique_assets.json'
+import './reset.css'
 import './style.css'
 import './tokens.css'
 
@@ -74,12 +75,13 @@ function App() {
 
   return (
     <>
-      <main className="app__main">
-        <div className="app__card-container">
+      <div className="app__card-container">
           {hasNoMatch ? (
             <p className="app__error-message">Такой карты нет</p>
           ) : card ? (
-            <Card card={card} />
+            <div className="app__animation-container">
+<Card card={card} />
+            </div>
           ) : (
             ''
           )}
@@ -96,7 +98,6 @@ function App() {
             />
           ))}
         </div>
-      </main>
     </>
   )
 }

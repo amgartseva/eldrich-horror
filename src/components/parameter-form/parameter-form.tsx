@@ -274,7 +274,6 @@ export default function ParameterForm({
                       checked={selectedTypes.includes(type)}
                       onChange={() => toggleTypeSelection(type)}
                     />
-                    <span className="parameter-form__name">{type}</span>
                     <span className="parameter-form__checkmark"></span>
                   </label>
                 </div>
@@ -305,7 +304,6 @@ export default function ParameterForm({
                       checked={selectedModifiers.includes(modifier)}
                       onChange={() => toggleModifierSelection(modifier)}
                     />
-                    <span className="parameter-form__name">{modifier}</span>
                     <span className="parameter-form__checkmark"></span>
                   </label>
                 </div>

@@ -16,7 +16,7 @@ export default function Card({ card }: CardProps) {
   const modifiers = card.modifiers.length > 0 ? card.modifiers.join(', ') : ''
 
   return (
-    <div className="card">
+    <div className="card app__card">
       {card.cost ? <div className="card__cost">{card.cost}$</div> : ''}
       <div className="card__count">{card.count}</div>
       <h2 className="card__title">{card.name}</h2>

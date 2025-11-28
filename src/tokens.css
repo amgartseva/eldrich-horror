@@ -4,7 +4,7 @@
   --coffee: #b27d57;
   --ochre: #7f4b30;
   --gum: #7d8769;
-  --moss: #424c21;
+  --moss: #3A4722;
   --forest: #173125;
   --basalt: #212e40;
 
@@ -16,7 +16,6 @@
   --text-medium: var(--ochre);
   --text-dark: var(--basalt);
 
-  --color-button-light: var(--gum);
   --color-button-medium: var(--moss);
   --color-button-dark: var(--forest);
 

@@ -13,11 +13,12 @@
 
 .parameter-form__logic-button {
   position: absolute;
-  top: calc(var(--button-height) / 2);
+  top: 0;
   right: 4px;
-  transform: translateY(-50%);
   background: none;
   display: flex;
+  align-items: center;
+  height: var(--button-height);
 }
 
 .parameter-form__logic-text {
@@ -98,8 +99,8 @@
 }
 
 .parameter-form__label .parameter-form__checkmark:after {
-  left: 9px;
-  top: 0px;
+  left: 11px;
+  top: 2px;
   width: 10px;
   height: 23px;
   border: solid var(--color-checkbox-icon);
@@ -107,10 +108,6 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-.parameter-form__name {
-  visibility: hidden;
 }
 
 .parameter-form__button {
