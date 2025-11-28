@@ -7,13 +7,42 @@
   width: 100%;
 }
 
+.parameter-form__dataset-wrapper {
+  position: relative;
+}
+
+.parameter-form__logic-button {
+  position: absolute;
+  top: calc(var(--button-height) / 2);
+  right: 4px;
+  transform: translateY(-50%);
+  background: none;
+  display: flex;
+}
+
+.parameter-form__logic-text {
+  color: var(--text-switch);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.parameter-form__logic-text:not(.parameter-form__logic-text--active) {
+  opacity: 0.7;
+}
+
+.parameter-form__logic-text--active {
+  background-color: var(--color-switch-active);
+}
+
 .parameter-form__dataset-button,
 .parameter-form__button {
   height: var(--button-height);
-  color: var(--color-lightest);
+  color: var(--text-light);
 }
 
 .parameter-form__dataset-button {
+  width: 100%;
   background-color: var(--color-button-dark);
 }
 
@@ -59,7 +88,7 @@
 }
 
 .parameter-form__checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }

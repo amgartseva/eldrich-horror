@@ -12,18 +12,21 @@ import './tokens.css'
 
 // Define stop words for each dataset
 // Add words you want to exclude from being displayed as buttons
-const stopWordsConfig: Record<string, { types?: string[]; modifiers?: string[] }> = {
-  'Состояния': {
+const stopWordsConfig: Record<
+  string,
+  { types?: string[]; modifiers?: string[] }
+> = {
+  Состояния: {
     types: ['Преследование', 'Соглашение', 'Воздействие', 'Препятствие'],
     modifiers: ['Обычное'],
   },
-  'Заклинания': {
+  Заклинания: {
     modifiers: ['Командная'],
   },
-  'Активы': {
+  Активы: {
     modifiers: ['Командная'],
   },
-  'Артефакты': {
+  Артефакты: {
     types: ['Безделушка'],
     modifiers: ['Командная'],
   },
@@ -73,11 +76,13 @@ function App() {
     <>
       <main className="app__main">
         <div className="app__card-container">
-          {hasNoMatch
-            ? <p className="app__error-message">Такой карты нет</p>
-            : card
-            ? <Card card={card} />
-            : ''}
+          {hasNoMatch ? (
+            <p className="app__error-message">Такой карты нет</p>
+          ) : card ? (
+            <Card card={card} />
+          ) : (
+            ''
+          )}
         </div>
         <div className="app__settings">
           {datasets.map((dataset) => (

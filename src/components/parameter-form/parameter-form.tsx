@@ -17,22 +17,22 @@ function pickRandomAsset(list: Asset[]): Asset {
   if (list.length === 0) {
     throw new Error('Cannot pick from empty list')
   }
-  
+
   // Calculate total count (weight) - default to 1 if count is not specified
   const totalCount = list.reduce((sum, asset) => {
     const count = asset.count ?? 1
     return sum + count
   }, 0)
-  
+
   if (totalCount === 0) {
     // Fallback to simple random selection if all counts are 0
     const index = Math.floor(Math.random() * list.length)
     return list[index] ?? list[0]
   }
-  
+
   // Generate random number between 0 and totalCount
   const random = Math.random() * totalCount
-  
+
   // Find which card the random number falls into based on cumulative counts
   let cumulativeCount = 0
   for (const asset of list) {
@@ -42,7 +42,7 @@ function pickRandomAsset(list: Asset[]): Asset {
       return asset
     }
   }
-  
+
   // Fallback (should never reach here, but TypeScript needs it)
   return list[list.length - 1] ?? list[0]
 }
@@ -56,6 +56,7 @@ export default function ParameterForm({
 }: ParameterFormProps) {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedModifiers, setSelectedModifiers] = useState<string[]>([])
+  const [filterLogic, setFilterLogic] = useState<'AND' | 'OR'>('AND')
 
   // Extract unique types from assets
   const uniqueTypes = useMemo(() => {
@@ -72,7 +73,10 @@ export default function ParameterForm({
           })
         } else {
           // Handle comma-separated types in a string (e.g., "Талант, Дар")
-          const typeStrings = asset.type.split(',').map((t) => t.trim()).filter((t) => t && !stopTypes.includes(t))
+          const typeStrings = asset.type
+            .split(',')
+            .map((t) => t.trim())
+            .filter((t) => t && !stopTypes.includes(t))
           typeStrings.forEach((type) => {
             types.add(type)
           })
@@ -104,7 +108,7 @@ export default function ParameterForm({
 
   const toggleTypeSelection = (type: string) => {
     setSelectedTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type],
     )
   }
 
@@ -112,14 +116,18 @@ export default function ParameterForm({
     setSelectedModifiers((prev) =>
       prev.includes(modifier)
         ? prev.filter((m) => m !== modifier)
-        : [...prev, modifier]
+        : [...prev, modifier],
     )
+  }
+
+  const toggleFilterLogic = () => {
+    setFilterLogic((prev) => (prev === 'AND' ? 'OR' : 'AND'))
   }
 
   const handleDatasetClick = () => {
     // Apply all selected parameters when picking a card
     const filteredAssets = assets.filter((asset) => {
-      // AND logic for types: card must have ALL selected types
+      // Logic for types: AND / OR based on filterLogic state
       const matchesType =
         selectedTypes.length === 0
           ? true
@@ -129,22 +137,46 @@ export default function ParameterForm({
               const assetTypes = Array.isArray(asset.type)
                 ? asset.type.map((t) => t.trim())
                 : asset.type
-                ? asset.type.split(',').map((t) => t.trim()).filter((t) => t)
-                : []
-              // Check if asset has ALL selected types
-              return selectedTypes.every((selectedType) =>
-                assetTypes.includes(selectedType)
+                  ? asset.type
+                      .split(',')
+                      .map((t) => t.trim())
+                      .filter((t) => t)
+                  : []
+
+              if (filterLogic === 'AND') {
+                // Card must have ALL selected types
+                return selectedTypes.every((selectedType) =>
+                  assetTypes.includes(selectedType),
+                )
+              }
+
+              // OR logic: card must have AT LEAST ONE of the selected types
+              return selectedTypes.some((selectedType) =>
+                assetTypes.includes(selectedType),
               )
             })()
 
+      // Logic for modifiers: AND / OR based on filterLogic state
       const matchesModifiers =
         selectedModifiers.length === 0
           ? true
-          : selectedModifiers.every((modifier) =>
-              asset.modifiers && Array.isArray(asset.modifiers)
-                ? asset.modifiers.includes(modifier)
-                : false
-            )
+          : (() => {
+              if (!asset.modifiers || !Array.isArray(asset.modifiers)) {
+                return false
+              }
+
+              if (filterLogic === 'AND') {
+                // Card must have ALL selected modifiers
+                return selectedModifiers.every((modifier) =>
+                  asset.modifiers?.includes(modifier),
+                )
+              }
+
+              // OR logic: card must have AT LEAST ONE of the selected modifiers
+              return selectedModifiers.some((modifier) =>
+                asset.modifiers?.includes(modifier),
+              )
+            })()
 
       return matchesType && matchesModifiers
     })
@@ -167,7 +199,10 @@ export default function ParameterForm({
       }
       if (asset.type) {
         // Handle comma-separated types
-        const assetTypes = asset.type.split(',').map((t) => t.trim()).filter((t) => t)
+        const assetTypes = asset.type
+          .split(',')
+          .map((t) => t.trim())
+          .filter((t) => t)
         return assetTypes.includes(type)
       }
       return false
@@ -184,8 +219,7 @@ export default function ParameterForm({
   const handleModifierClick = (modifier: string) => {
     // When a modifier is selected via its button, ignore checkboxes and pick from that modifier only
     const filteredAssets = assets.filter(
-      (asset) =>
-        asset.modifiers && asset.modifiers.includes(modifier)
+      (asset) => asset.modifiers && asset.modifiers.includes(modifier),
     )
     if (filteredAssets.length > 0) {
       onNoMatchChange(false)
@@ -198,86 +232,99 @@ export default function ParameterForm({
 
   return (
     <div className="parameter-form">
-      <button
-        type="button"
-        className="parameter-form__dataset-button"
-        onClick={handleDatasetClick}
-      >
-        {datasetName}
-      </button>
+      <div className="parameter-form__dataset-wrapper">
+        <button
+          type="button"
+          className="parameter-form__dataset-button"
+          onClick={handleDatasetClick}
+        >
+          {datasetName}
+        </button>
+        <button
+          type="button"
+          className="parameter-form__logic-button"
+          onClick={toggleFilterLogic}
+        >
+          <span
+            className={`parameter-form__logic-text${
+              filterLogic === 'AND' ? ' parameter-form__logic-text--active' : ''
+            }`}
+          >
+            AND
+          </span>
+          <span
+            className={`parameter-form__logic-text${
+              filterLogic === 'OR' ? ' parameter-form__logic-text--active' : ''
+            }`}
+          >
+            OR
+          </span>
+        </button>
+      </div>
       <div className="parameter-form__section">
-      {uniqueTypes.length > 0 && (
-        <>
-          {uniqueTypes.map((type) => (
-            <div
-              key={type}
-              className="parameter-form__item"
-            >
-              <div className="parameter-form__checkbox-wrapper">
-                <label className="parameter-form__label">
-                  <input
-                    type="checkbox"
-                    className="parameter-form__checkbox"
-                    checked={selectedTypes.includes(type)}
-                    onChange={() => toggleTypeSelection(type)}
-                  />
-                  <span className="parameter-form__name">{type}</span>
-                  <span className="parameter-form__checkmark"></span>
-                </label>
+        {uniqueTypes.length > 0 && (
+          <>
+            {uniqueTypes.map((type) => (
+              <div key={type} className="parameter-form__item">
+                <div className="parameter-form__checkbox-wrapper">
+                  <label className="parameter-form__label">
+                    <input
+                      type="checkbox"
+                      className="parameter-form__checkbox"
+                      checked={selectedTypes.includes(type)}
+                      onChange={() => toggleTypeSelection(type)}
+                    />
+                    <span className="parameter-form__name">{type}</span>
+                    <span className="parameter-form__checkmark"></span>
+                  </label>
+                </div>
+                <button
+                  type="button"
+                  className={`parameter-form__button${
+                    selectedTypes.includes(type)
+                      ? ' parameter-form__button--selected'
+                      : ''
+                  }`}
+                  onClick={() => handleTypeClick(type)}
+                >
+                  {type}
+                </button>
               </div>
-              <button
-                type="button"
-                className={`parameter-form__button${
-                  selectedTypes.includes(type)
-                    ? ' parameter-form__button--selected'
-                    : ''
-                }`}
-                onClick={() => handleTypeClick(type)}
-              >
-                {type}
-              </button>
-            </div>
-          ))}
-        </>
-      )}
-      {uniqueModifiers.length > 0 && (
-        <>
-          {uniqueModifiers.map((modifier) => (
-            <div
-              key={modifier}
-              className="parameter-form__item"
-            >
-              <div className="parameter-form__checkbox-wrapper">
-                <label className="parameter-form__label">
-                  <input
-                    type="checkbox"
-                    className="parameter-form__checkbox"
-                    checked={selectedModifiers.includes(modifier)}
-                    onChange={() => toggleModifierSelection(modifier)}
-                  />
-                  <span className="parameter-form__name">
-                    {modifier}
-                  </span>
-                  <span className="parameter-form__checkmark"></span>
-                </label>
+            ))}
+          </>
+        )}
+        {uniqueModifiers.length > 0 && (
+          <>
+            {uniqueModifiers.map((modifier) => (
+              <div key={modifier} className="parameter-form__item">
+                <div className="parameter-form__checkbox-wrapper">
+                  <label className="parameter-form__label">
+                    <input
+                      type="checkbox"
+                      className="parameter-form__checkbox"
+                      checked={selectedModifiers.includes(modifier)}
+                      onChange={() => toggleModifierSelection(modifier)}
+                    />
+                    <span className="parameter-form__name">{modifier}</span>
+                    <span className="parameter-form__checkmark"></span>
+                  </label>
+                </div>
+                <button
+                  type="button"
+                  className={`parameter-form__button${
+                    selectedModifiers.includes(modifier)
+                      ? ' parameter-form__button--selected'
+                      : ''
+                  }`}
+                  onClick={() => handleModifierClick(modifier)}
+                >
+                  {modifier}
+                </button>
               </div>
-              <button
-                type="button"
-                className={`parameter-form__button${
-                  selectedModifiers.includes(modifier)
-                    ? ' parameter-form__button--selected'
-                    : ''
-                }`}
-                onClick={() => handleModifierClick(modifier)}
-              >
-                {modifier}
-              </button>
-            </div>
-          ))}
-        </>
-      )}
+            ))}
+          </>
+        )}
       </div>
     </div>
   )
 }
-
