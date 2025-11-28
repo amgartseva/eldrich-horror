@@ -14,10 +14,21 @@ import './tokens.css'
 // Add words you want to exclude from being displayed as buttons
 const stopWordsConfig: Record<string, { types?: string[]; modifiers?: string[] }> = {
   'Состояния': {
+    types: ['Преследование', 'Соглашение', 'Воздействие', 'Препятствие'],
     modifiers: ['Обычное'],
   },
   'Заклинания': {
     modifiers: ['Командная'],
+  },
+  'Активы': {
+    modifiers: ['Командная'],
+  },
+  'Артефакты': {
+    types: ['Безделушка'],
+    modifiers: ['Командная'],
+  },
+  'Уникальные активы': {
+    modifiers: ['Оружие'],
   },
 }
 

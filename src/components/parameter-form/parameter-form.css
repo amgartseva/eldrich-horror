@@ -18,13 +18,14 @@
 }
 
 .parameter-form__section {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(3, calc(100% / 3));
 }
 
 .parameter-form__item {
   flex-grow: 1;
-  min-width: 50%;
   position: relative; /* for label */
 }
 

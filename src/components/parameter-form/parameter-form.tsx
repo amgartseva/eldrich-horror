@@ -89,8 +89,12 @@ export default function ParameterForm({
     assets.forEach((asset) => {
       if (asset.modifiers && Array.isArray(asset.modifiers)) {
         asset.modifiers.forEach((modifier) => {
-          if (modifier && !stopModifiers.includes(modifier)) {
-            modifiers.add(modifier)
+          const normalizedModifier = modifier.trim()
+          if (
+            normalizedModifier &&
+            !stopModifiers.includes(normalizedModifier)
+          ) {
+            modifiers.add(normalizedModifier)
           }
         })
       }

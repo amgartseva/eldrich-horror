@@ -19,11 +19,11 @@ export default function Card({ card }: CardProps) {
   return (
     <div className="card">
       {card.cost ? 
-          (
-            <div className="card__cost">{card.cost}</div>
-          ) : ''
-        }
-      
+        (
+          <div className="card__cost">{card.cost}$</div>
+        ) : ''
+      }
+      <div className="card__count">{card.count}</div>
       <h2 className="card__title">{card.name}</h2>
       <div className="card__details">
         <p className="card__type">

@@ -20,17 +20,26 @@
     font-weight: 500;
 }
 
-.card__cost {
+.card__cost,
+.card__count {
     position: absolute;
     top: 0;
-    left: 0;
     width: 32px;
     height: 32px;
-    background-color: var(--color-card-cost);
     color: var(--text-light);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
+    background-color: var(--color-card-badge);
+}
+
+.card__cost {
+    left: 0;
     border-bottom-right-radius: 8px;
+}
+
+.card__count {
+    right: 0;
+    border-bottom-left-radius: 8px;
 }
