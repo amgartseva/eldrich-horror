@@ -76,28 +76,28 @@ function App() {
   return (
     <>
       <div className="app__card-container">
-          {hasNoMatch ? (
-            <p className="app__error-message">Такой карты нет</p>
-          ) : card ? (
-            <div className="app__animation-container">
-<Card card={card} />
-            </div>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="app__settings">
-          {datasets.map((dataset) => (
-            <ParameterForm
-              key={dataset.name}
-              datasetName={dataset.name}
-              assets={dataset.data}
-              onCardSelect={handleCardSelect}
-              onNoMatchChange={setHasNoMatch}
-              stopWords={stopWordsConfig[dataset.name]}
-            />
-          ))}
-        </div>
+        {hasNoMatch ? (
+          <p className="app__error-message">Такой карты нет</p>
+        ) : card ? (
+          <div className="app__animation-container">
+            <Card card={card} />
+          </div>
+        ) : (
+          ''
+        )}
+      </div>
+      <div className="app__settings">
+        {datasets.map((dataset) => (
+          <ParameterForm
+            key={dataset.name}
+            datasetName={dataset.name}
+            assets={dataset.data}
+            onCardSelect={handleCardSelect}
+            onNoMatchChange={setHasNoMatch}
+            stopWords={stopWordsConfig[dataset.name]}
+          />
+        ))}
+      </div>
     </>
   )
 }

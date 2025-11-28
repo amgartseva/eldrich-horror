@@ -20,12 +20,18 @@ export default function Card({ card }: CardProps) {
       {card.cost ? <div className="card__cost">{card.cost}$</div> : ''}
       <div className="card__count">{card.count}</div>
       <h2 className="card__title">{card.name}</h2>
-      <div className="card__details">
-        <p className="card__type">
+      <p className="card__details">
+        <span className="card__type">
           {Array.isArray(card.type) ? card.type.join(', ') : card.type}
-        </p>
-        {modifiers ? <i className="card__modifiers">{modifiers}</i> : ''}
-      </div>
+        </span>
+        {modifiers ? (
+          <>
+            {' – '} <i className="card__modifiers">{modifiers}</i>
+          </>
+        ) : (
+          ''
+        )}
+      </p>
     </div>
   )
 }
