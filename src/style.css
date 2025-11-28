@@ -52,6 +52,7 @@ button {
   width: 100%;
   min-height: 100px;
   background-color: var(--color-card);
+  border-bottom: 2px solid var(--color-app);
 }
 
 .app__error-message {
