@@ -55,7 +55,7 @@ button {
 }
 
 .app__animation-container {
-  animation: showCard 0.5s ease-out;
+  animation: showCard 0.4s ease-out;
   z-index: 1;
 }
 
@@ -64,16 +64,23 @@ button {
     bottom: -110px;
     transform: translateX(var(--offset-x)) translateY(var(--offset-y))
       rotate(var(--rotate));
+    box-shadow: 0px -25px 20px 6px rgba(128, 109, 87, 0.5);
   }
 
   40% {
     transform: translateX(calc(var(--offset-x) * 0.6))
       translateY(calc(var(--offset-y) * 0.6)) rotate(calc(var(--rotate) * 0.6));
+    box-shadow: 0px -10px 15px 3px rgb(128, 109, 87);
+  }
+
+  60% {
+    box-shadow: 0px -2px 5px 3px rgb(128, 109, 87);
   }
 
   100% {
     bottom: 0;
     transform: translateX(0) translateY(0) rotate(0deg);
+    box-shadow: none;
   }
 }
 
