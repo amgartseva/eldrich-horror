@@ -66,8 +66,21 @@ function App() {
   const [hasNoMatch, setHasNoMatch] = useState(false)
   const [cardKey, setCardKey] = useState(0)
   const [showGhost, setShowGhost] = useState(false)
+  const [animationOffset, setAnimationOffset] = useState({
+    x: 0,
+    y: 0,
+    rotate: 0,
+  })
   const ghostTimeoutRef = useRef<number | null>(null)
   const errorTimeoutRef = useRef<number | null>(null)
+
+  const generateRandomOffset = () => {
+    return {
+      x: Math.random() * 60 - 30, // Random between -30 and 30
+      y: Math.random() * 40 - 20, // Random between -20 and 20
+      rotate: Math.random() * 10 - 5, // Random between -5 and 5 degrees
+    }
+  }
 
   const handleCardSelect = (selectedCard: Asset) => {
     // Clear any pending ghost card removal
@@ -88,6 +101,8 @@ function App() {
       setPreviousCard(card)
     }
     setCard(selectedCard)
+    // Generate random offset for animation
+    setAnimationOffset(generateRandomOffset())
     // Increment key to force remount even if same card is picked
     setCardKey((prev) => prev + 1)
 
@@ -160,7 +175,17 @@ function App() {
         )}
         {card && (
           <>
-            <div key={cardKey} className="app__animation-container">
+            <div
+              key={cardKey}
+              className="app__animation-container"
+              style={
+                {
+                  '--offset-x': `${animationOffset.x}px`,
+                  '--offset-y': `${animationOffset.y}px`,
+                  '--rotate': `${animationOffset.rotate}deg`,
+                } as React.CSSProperties
+              }
+            >
               <Card card={card} />
             </div>
             {previousCard && !hasNoMatch && (

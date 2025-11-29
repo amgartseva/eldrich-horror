@@ -55,24 +55,32 @@ button {
 }
 
 .app__animation-container {
-  animation: showCard 0.4s ease-out;
+  animation: showCard 0.5s ease-out;
   z-index: 1;
+}
+
+@keyframes showCard {
+  0% {
+    bottom: -110px;
+    transform: translateX(var(--offset-x)) translateY(var(--offset-y))
+      rotate(var(--rotate));
+  }
+
+  40% {
+    transform: translateX(calc(var(--offset-x) * 0.6))
+      translateY(calc(var(--offset-y) * 0.6)) rotate(calc(var(--rotate) * 0.6));
+  }
+
+  100% {
+    bottom: 0;
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
 }
 
 .app__ghost-card {
   bottom: -1px;
   z-index: 0;
   animation: hideCard 0.4s ease-in forwards;
-}
-
-@keyframes showCard {
-  0% {
-    bottom: -110px;
-  }
-
-  100% {
-    bottom: 0;
-  }
 }
 
 @keyframes hideCard {
