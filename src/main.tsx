@@ -75,13 +75,13 @@ function App() {
       clearTimeout(ghostTimeoutRef.current)
       ghostTimeoutRef.current = null
     }
-    
+
     // Clear any pending error timeout
     if (errorTimeoutRef.current) {
       clearTimeout(errorTimeoutRef.current)
       errorTimeoutRef.current = null
     }
-    
+
     // Save the current card as previous before setting the new one
     setShowGhost(false)
     if (card) {
@@ -90,7 +90,7 @@ function App() {
     setCard(selectedCard)
     // Increment key to force remount even if same card is picked
     setCardKey((prev) => prev + 1)
-    
+
     // If there was an error showing, keep it visible during animation
     // then clear it after the card has animated in
     if (hasNoMatch) {
@@ -110,13 +110,13 @@ function App() {
       clearTimeout(ghostTimeoutRef.current)
       ghostTimeoutRef.current = null
     }
-    
+
     // Clear any existing error timeout
     if (errorTimeoutRef.current) {
       clearTimeout(errorTimeoutRef.current)
       errorTimeoutRef.current = null
     }
-    
+
     if (hasNoMatch) {
       if (card) {
         // We have a card, show it as ghost
@@ -151,7 +151,10 @@ function App() {
       <div className="app__card-container">
         {hasNoMatch && <p className="app__error-message">Такой карты нет</p>}
         {showGhost && previousCard && (
-          <div key={`ghost-${cardKey}`} className="app__ghost-card app__ghost-card--hiding">
+          <div
+            key={`ghost-${cardKey}`}
+            className="app__ghost-card app__ghost-card--hiding"
+          >
             <Card card={previousCard} />
           </div>
         )}
@@ -161,7 +164,10 @@ function App() {
               <Card card={card} />
             </div>
             {previousCard && !hasNoMatch && (
-              <div key={`ghost-${cardKey}`} className="app__ghost-card app__ghost-card--static">
+              <div
+                key={`ghost-${cardKey}`}
+                className="app__ghost-card app__ghost-card--static"
+              >
                 <Card card={previousCard} />
               </div>
             )}
