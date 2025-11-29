@@ -25,8 +25,12 @@
 }
 
 .card__title {
-  font-size: 22px; /* 24px */
+  font-size: 24px;
   white-space: nowrap;
+}
+
+.card__title--truncated {
+  font-size: 20px;
 }
 
 .card__title-decoration {
