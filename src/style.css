@@ -52,6 +52,7 @@ button {
   margin-left: 4px;
   margin-right: 4px;
   left: 0;
+  border-radius: 8px;
 }
 
 .app__animation-container {
